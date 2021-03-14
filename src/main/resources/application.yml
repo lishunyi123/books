@@ -7,7 +7,7 @@ spring:
         # 是否开启
         enabled: true
         # 迁移前校验SQL文件是否存在问题
-        validate-on-migrate: true
+        #        validate-on-migrate: true
         # 每次清空原始库，生产要关闭！！！
         clean-disabled: true
         # 校验路径下是否存在SQL文件
@@ -16,11 +16,23 @@ spring:
         baseline-on-migrate: true
         # 初始版本1
         baseline-version: 1
+        url: ${spring.datasource.url}
+        user: ${spring.datasource.username}
+        password: ${spring.datasource.password}
     application:
         name: books
     datasource:
         driver-class-name: com.mysql.cj.jdbc.Driver
         name: defaultDataSource
-        password: root
-        url: jdbc:mysql://localhost:3306/books?serverTimezone=UTC
-        username: 123456
+        password: 123456
+        url: jdbc:mysql://127.0.0.1:3306/books
+        username: root
+        hikari:
+            minimum-idle: 5
+            idle-timeout: 600000
+            maximum-pool-size: 10
+            auto-commit: true
+            pool-name: MyHikariCP
+            max-lifetime: 1800000
+            connection-timeout: 30000
+            connection-test-query: SELECT 1

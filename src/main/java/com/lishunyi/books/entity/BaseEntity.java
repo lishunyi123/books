@@ -1,7 +1,6 @@
 package com.lishunyi.books.entity;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -17,7 +16,7 @@ import java.time.LocalDateTime;
  * @since 2021/3/12 11:15
  **/
 @Data
-@Builder
+//@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @MappedSuperclass
