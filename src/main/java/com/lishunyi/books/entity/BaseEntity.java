@@ -3,8 +3,14 @@ package com.lishunyi.books.entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.GenericGenerator;
+import org.springframework.data.annotation.CreatedBy;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedBy;
+import org.springframework.data.annotation.LastModifiedDate;
 
 import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 import java.io.Serializable;
@@ -26,18 +32,24 @@ public abstract class BaseEntity implements Serializable {
 
     @Column
     @Id
+    @GeneratedValue(generator = "SnowflakeId")
+    @GenericGenerator(name = "SnowflakeId", strategy = "com.lishunyi.books.config.SnowflakeIdGenerator")
     private Long id;
 
     @Column
+    @CreatedDate
     private LocalDateTime createTime;
 
     @Column
+    @CreatedBy
     private Long createBy;
 
     @Column
+    @LastModifiedDate
     private LocalDateTime updateTime;
 
     @Column
+    @LastModifiedBy
     private Long updateBy;
 
     @Column(name = "is_deleted")
