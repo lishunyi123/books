@@ -1,12 +1,11 @@
 package com.lishunyi.books.controller;
 
+import cn.hutool.core.bean.BeanUtil;
+import com.lishunyi.books.dto.BookCategoryDTO;
 import com.lishunyi.books.entity.BookCategory;
 import com.lishunyi.books.service.BookCategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -16,14 +15,20 @@ import java.util.List;
  * @since 2021/3/15 16:31
  **/
 @RestController
-@RequestMapping("/book-category")
+@RequestMapping("/v1/book-category")
 public class BookCategoryController {
 
     @Autowired
     private BookCategoryService bookCategoryService;
 
-    @GetMapping("/list-by-channel/{channel}")
+    @GetMapping("/{channel}")
     public List<BookCategory> findBookCategoryListByChannel(@PathVariable(value = "channel") Boolean channel) {
         return bookCategoryService.findBookCategoryListByChannel(channel);
+    }
+
+    @PostMapping("/")
+    public Boolean create(@RequestBody BookCategoryDTO dto) {
+        BookCategory bookCategory = BeanUtil.copyProperties(dto, BookCategory.class);
+        return bookCategoryService.saveBookCategory(bookCategory);
     }
 }
