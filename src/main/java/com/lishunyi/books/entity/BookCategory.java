@@ -1,6 +1,11 @@
 package com.lishunyi.books.entity;
 
-import lombok.*;
+import com.lishunyi.jpa.entity.BaseEntity;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.annotations.SQLDelete;
@@ -22,7 +27,7 @@ import javax.persistence.Table;
 @Table(name = "book_category")
 @SQLDelete(sql = "update book_category set is_deleted = 1 where id = ?")    // JpaRepository.delete删除时，不做实际删除，变更删除字段
 @Where(clause = "is_deleted = 0")    // JpaRepository查询时，携带的查询条件，（未逻辑删除的）
-@Builder
+@SuperBuilder
 @AllArgsConstructor
 @DynamicInsert
 @DynamicUpdate

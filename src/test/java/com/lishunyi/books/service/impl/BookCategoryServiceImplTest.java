@@ -26,7 +26,7 @@ class BookCategoryServiceImplTest {
     @Test
     void saveBookCategory() {
         Boolean bookCategory = bookCategoryService.saveBookCategory(BookCategory.builder()
-                .categoryName("武侠仙侠").channel(false).parentId(0L).sort(1).build());
+                .categoryName("不好").channel(false).parentId(0L).sort(4).deleted(Boolean.TRUE).build());
         assertTrue(bookCategory);
     }
 }

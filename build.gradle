@@ -15,6 +15,7 @@ configurations {
 }
 
 repositories {
+    mavenLocal()
     maven {
         url "http://maven.aliyun.com/nexus/content/groups/public"
     }
@@ -22,6 +23,8 @@ repositories {
 }
 
 dependencies {
+    implementation 'com.lishunyi:lishunyi-starter-jpa:0.0.1-SNAPSHOT'
+    implementation 'com.lishunyi:lishunyi-starter-base:0.0.1-SNAPSHOT'
     implementation 'org.springframework.boot:spring-boot-starter-data-elasticsearch'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-data-redis'

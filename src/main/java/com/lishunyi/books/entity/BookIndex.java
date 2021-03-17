@@ -1,5 +1,6 @@
 package com.lishunyi.books.entity;
 
+import com.lishunyi.jpa.entity.BaseEntity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;

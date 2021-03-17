@@ -1,6 +1,7 @@
 package com.lishunyi.books.controller;
 
 import cn.hutool.core.bean.BeanUtil;
+import com.lishunyi.base.http.Response;
 import com.lishunyi.books.dto.BookCategoryDTO;
 import com.lishunyi.books.entity.BookCategory;
 import com.lishunyi.books.service.BookCategoryService;
@@ -22,8 +23,8 @@ public class BookCategoryController {
     private BookCategoryService bookCategoryService;
 
     @GetMapping("/{channel}")
-    public List<BookCategory> findBookCategoryListByChannel(@PathVariable(value = "channel") Boolean channel) {
-        return bookCategoryService.findBookCategoryListByChannel(channel);
+    public Response<List<BookCategory>> findBookCategoryListByChannel(@PathVariable(value = "channel") Boolean channel) {
+        return Response.success(bookCategoryService.findBookCategoryListByChannel(channel));
     }
 
     @PostMapping("/")
