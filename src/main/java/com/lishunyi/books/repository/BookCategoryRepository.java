@@ -1,7 +1,7 @@
 package com.lishunyi.books.repository;
 
 import com.lishunyi.books.entity.BookCategory;
-import org.springframework.data.jpa.repository.JpaRepository;
+import com.lishunyi.jpa.base.BaseRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -12,6 +12,6 @@ import java.util.List;
  * @since 2021/3/15 14:11
  **/
 @Repository
-public interface BookCategoryRepository extends JpaRepository<BookCategory, Long> {
+public interface BookCategoryRepository extends BaseRepository<BookCategory, Long> {
     List<BookCategory> findAllByChannelAndParentId(boolean channel, Long parentId);
 }
